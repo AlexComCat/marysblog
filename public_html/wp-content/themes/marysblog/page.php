@@ -29,12 +29,12 @@ get_header(); ?>
                     <?php while(have_posts()) : the_post(); ?>
                         <h2 class="caption"><?php the_title(); ?></h2>
                         <?php the_content(); ?>
+                        <div id="vk_subscribe"></div> 
                         <p class="cont_edit"><?php edit_post_link('Редактировать пост'); ?></p>
                         <hr>
-
                     <?php endwhile; ?>
                 <?php endif; ?>              
-            </article>          
+            </article>         
         </main>
        <?php get_sidebar(); ?>
     </div>

@@ -8,7 +8,7 @@
 
         <link href="<?= bloginfo('template_directory'); ?>/css/reset.css" rel="stylesheet" type="text/css" />
         <link href="<?= bloginfo('template_directory'); ?>/css/fonts.css" rel="stylesheet" type="text/css" />
-        <link href="<?= bloginfo('template_directory'); ?>/style.css" rel="stylesheet" type="text/css" />
+        <link href="<?= bloginfo('template_directory'); ?>/css/style.css" rel="stylesheet" type="text/css" />
         <link href="<?= bloginfo('template_directory'); ?>/css/media.css" rel="stylesheet" type="text/css" />
 
         <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('rss2_url'); ?>" />

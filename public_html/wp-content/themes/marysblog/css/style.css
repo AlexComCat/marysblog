@@ -26,7 +26,7 @@ a:hover{
 
 /* header */
 header{
-    background: url("img/header_bg.jpg") no-repeat center;
+    background: url("../img/header_bg.jpg") no-repeat center;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -35,7 +35,7 @@ header{
 }
 
 header .birds{
-    background: url("img/birds.png") no-repeat center;
+    background: url("../img/birds.png") no-repeat center;
     background-size: cover;
     height: 62px;
     position: absolute;
@@ -44,7 +44,7 @@ header .birds{
     width: 110px;
 }
 header .sun{
-    background: url("img/sun.png") no-repeat center;
+    background: url("../img/sun.png") no-repeat center;
     background-size: cover;
     height: 128px;
     position: absolute;
@@ -363,7 +363,9 @@ aside #vk_group{
 #vk_group iframe {
      width: 100% !important;
 }
-
+#vk_subscribe iframe{
+    width: auto !important;
+}
 
 /* footer */
 footer{
@@ -387,7 +389,7 @@ footer .foot_capt{
 
 /* toTop button */
 #toTop{
-    background: url("img/toTop.jpg") no-repeat center;
+    background: url("../img/toTop.jpg") no-repeat center;
     background-size: 70px 70px;
     border-radius: 50%;
     box-shadow: 1px 1px 0 rgba(0, 0, 0, .1);

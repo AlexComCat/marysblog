@@ -13,10 +13,12 @@ document.addEventListener('DOMContentLoaded', function(){
         main,
         nav,
         navLoad,
+        params,
         scroll,
         sun,
         sunLoad,
         toggle,
+        vk_subscribe,
         win;
 
     // Setting of values of variables function
@@ -94,12 +96,46 @@ document.addEventListener('DOMContentLoaded', function(){
         };
     };    
 
+    // Color change of the active menu item
+    let navColor = function(){
+        params = window
+        .location
+        .search
+        .replace('?','')
+        .split('&')
+        .reduce(
+            function(p,e){
+                var a = e.split('=');
+                p[ decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
+                return p;
+            },
+            {}
+        );
+        if (params['cat'] == 11){
+            $('#link_'+ params['cat']).css({
+                'color' : '#df0f1d'
+            });
+        }
+        else{
+            $('#link_'+ params['cat']).css({
+                'color' : '#fff',
+                'text-shadow' : '0 0 2px #000'
+            });
+        };
+    };
+
     // Add VkWidget functions
-    let addWidgetVk = function(){
+    let addVkGroup = function(){
         try{
             VK.Widgets.Group("vk_group", {mode: 3, width: "auto", color1: 'FCFCFC', color2: '4C4C4C', color3: '4A76A8'}, 34213828);  
         } catch(e){
             $("#vk_group").html("<p>Oops...</p><p>Здесь была группа VK</p><p>но с ней нет соединения</p>");
+        };
+    };
+    let addVkSubscribe = function(){
+        VK.Widgets.Subscribe("vk_subscribe", {soft: 1}, 150333774);
+        vk_subscribe = {
+            height : $("#vk_subscribe").height()
         };
     };
     
@@ -108,7 +144,10 @@ document.addEventListener('DOMContentLoaded', function(){
         script.type = 'text/javascript';
         script.src = 'https://vk.com/js/api/openapi.js?154';
         document.body.appendChild(script);
-        addWidgetVk();
+        addVkGroup();
+        if (params['cat'] == 11){
+            addVkSubscribe();
+        };
     };
 
     let checkConnectionVK = function(url){   
@@ -202,6 +241,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // Content wrapper position
     let contWrapPos = function(){
+        // console.log(vk_subscribe.height);
         if(scroll.top < contWrap.offsetTop - nav.height - contWrapLoad.margTop){
             $('.cont_wrap').css({
                 'align-items': 'flex-start',
@@ -215,10 +255,12 @@ document.addEventListener('DOMContentLoaded', function(){
             });
         }
         else if(scroll.top + nav.height + aside.posTop + aside.height >= contWrap.posTop + contWrap.height){
-            $('.cont_wrap').css({
-                'align-items': 'flex-end',
-                'margin-top' : nav.margTop + nav.height + contWrapLoad.margTop + 'px'
-            });
+            if (win.width >= 900){
+                $('.cont_wrap').css({
+                    'align-items': 'flex-end',
+                    'margin-top' : nav.margTop + nav.height + contWrapLoad.margTop + 'px'
+                });
+            };
         }; 
     };
 
@@ -236,28 +278,7 @@ document.addEventListener('DOMContentLoaded', function(){
             $('nav').addClass('nav_fixed');
             $('.nav_center').addClass('nav_center_fixed');
         };
-    };
-
-    // Color change of the active menu item
-    let navColor = function(){
-        let params = window
-        .location
-        .search
-        .replace('?','')
-        .split('&')
-        .reduce(
-            function(p,e){
-                var a = e.split('=');
-                p[ decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
-                return p;
-            },
-            {}
-        );
-        $('#link_'+ params['cat']).css({
-            'color' : '#fff',
-            'text-shadow' : '0 0 2px #000'
-        });
-    };
+    };          
 
     // Visibility of the menu when display resize
     let navSectionDisplay = function(){
@@ -293,11 +314,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
     setVal();       //Initialization to setting values of a variable
     setValAnLoad();    
-    checkConnectionVK('https://vk.com/js/api/openapi.js?154');
+    checkConnectionVK('https://vk.com/js/api/openapi.js');
     funcGroup();
     clickHamburger();
     navColor();
-    
+
+
     // Event Tracking: \\
 
     // 1.Window resize event
@@ -308,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function(){
         
         // Change width for VK Widget when resize window
         $("#vk_group").empty();
-        addWidgetVk();
+        addVkGroup();
 
         //Set value in aside.height after VK Widget initialization 
         aside.height = $('aside').height();
