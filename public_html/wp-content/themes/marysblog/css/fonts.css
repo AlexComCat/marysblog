@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "NautilusPompilius";
+    src: url("../fonts/NautilusPompiliusRegular.woff") format("woff");
+}
+@font-face{
+    font-family: "RobotoRegular";
+    src: url("../fonts/RobotoRegular.woff");
+}
