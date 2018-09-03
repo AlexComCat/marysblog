@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
         sun,
         sunLoad,
         toggle,
-        vk_subscribe,
+        vkSubscribe,
         win;
 
     // Setting of values of variables function
@@ -77,6 +77,9 @@ document.addEventListener('DOMContentLoaded', function(){
             height: $('.sun').height(),
             posTop : $('.sun').position().top
         };
+        vkSubscribe = {
+            height: $('#vk_subscribe').height()
+        };
         win = {
             height: $(window).height(),
             width: $(window).width()
@@ -96,6 +99,19 @@ document.addEventListener('DOMContentLoaded', function(){
         };
     };    
 
+    // let headerPos = function(){
+    //     if (scroll.top < 0){
+    //         $('header').css({
+    //             'margin' : scroll.top + 'px'
+    //         });
+    //     }
+    //     else{
+    //         $('header').css({
+    //             'margin' : ''
+    //         });
+    //     };
+    // };
+
     // Color change of the active menu item
     let navColor = function(){
         params = window
@@ -111,6 +127,10 @@ document.addEventListener('DOMContentLoaded', function(){
             },
             {}
         );
+        $('#link_'+ params['cat']).css({
+            'pointer-events' : 'none',
+            'cursor' : 'default'
+        });
         if (params['cat'] == 11){
             $('#link_'+ params['cat']).css({
                 'color' : '#df0f1d'
@@ -118,8 +138,7 @@ document.addEventListener('DOMContentLoaded', function(){
         }
         else{
             $('#link_'+ params['cat']).css({
-                'color' : '#fff',
-                'text-shadow' : '0 0 2px #000'
+                'color' : '#fff'
             });
         };
     };
@@ -133,8 +152,12 @@ document.addEventListener('DOMContentLoaded', function(){
         };
     };
     let addVkSubscribe = function(){
+        $('#vk_subscribe').css({
+            'display' : 'block'
+        });
+        contWrap.height = $('.cont_wrap').height();
         VK.Widgets.Subscribe("vk_subscribe", {soft: 1}, 150333774);
-        vk_subscribe = {
+        vkSubscribe = {
             height : $("#vk_subscribe").height()
         };
     };
@@ -147,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function(){
         addVkGroup();
         if (params['cat'] == 11){
             addVkSubscribe();
+            
         };
     };
 
@@ -241,7 +265,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // Content wrapper position
     let contWrapPos = function(){
-        // console.log(vk_subscribe.height);
         if(scroll.top < contWrap.offsetTop - nav.height - contWrapLoad.margTop){
             $('.cont_wrap').css({
                 'align-items': 'flex-start',
@@ -313,12 +336,11 @@ document.addEventListener('DOMContentLoaded', function(){
     };
 
     setVal();       //Initialization to setting values of a variable
-    setValAnLoad();    
+    setValAnLoad();
+    navColor();    
     checkConnectionVK('https://vk.com/js/api/openapi.js');
     funcGroup();
     clickHamburger();
-    navColor();
-
 
     // Event Tracking: \\
 
@@ -339,6 +361,7 @@ document.addEventListener('DOMContentLoaded', function(){
     // 2.Scroll running event
     $(window).scroll(function(){
         scroll.top = $(document).scrollTop();
+        // headerPos();
         funcGroup();
         birdsMove();
     });

@@ -18,10 +18,10 @@ body{
 }
 
 a:hover{ 
-    transition: all .4s ease-out;
-    -moz-transition: all .4s ease-out;
-    -o-transition: all .4s ease-out;
-    -webkit-transition: all .4s ease-out;
+    transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
 }
 
 /* header */
@@ -63,6 +63,10 @@ header .sun{
 .logo a{
     color: inherit;
     text-decoration: inherit;
+}
+.logo a:hover{
+    /* color: #503e31; */
+    color: #5c4739;
 }
 .logo:first-letter{
     color: #8e030c;
@@ -118,6 +122,7 @@ nav .link{
     text-decoration: none;
 }
 nav .link:hover{
+    color: #fff;
     text-decoration: underline;
 }
 nav #link_8{
@@ -289,6 +294,13 @@ main article img{
     margin: 0 auto;
     width: 570px; 
 }
+main #vk_subscribe{
+    display: none;
+    height: 22px;
+}
+#vk_subscribe iframe{
+    width: auto !important;
+}
 main article hr{
     background-color: #808080;
     border: none;
@@ -362,9 +374,6 @@ aside #vk_group{
 #vk_group,
 #vk_group iframe {
      width: 100% !important;
-}
-#vk_subscribe iframe{
-    width: auto !important;
 }
 
 /* footer */
