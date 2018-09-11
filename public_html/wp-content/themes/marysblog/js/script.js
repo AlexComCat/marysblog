@@ -99,18 +99,14 @@ document.addEventListener('DOMContentLoaded', function(){
         };
     };    
 
-    // let headerPos = function(){
-    //     if (scroll.top < 0){
-    //         $('header').css({
-    //             'margin' : scroll.top + 'px'
-    //         });
-    //     }
-    //     else{
-    //         $('header').css({
-    //             'margin' : ''
-    //         });
-    //     };
-    // };
+    let negativeScroll = function(){
+        if (scroll.top < 0){
+            $('body').addClass('body_fixed');  
+        }
+        else{
+            $('body').removeClass('body_fixed');
+        };
+    };
 
     // Color change of the active menu item
     let navColor = function(){
@@ -255,12 +251,10 @@ document.addEventListener('DOMContentLoaded', function(){
                     toggle.classList.remove("is-active");
                 }
                 else{
-                    toggle.classList.add("is-active");                 
-                    
+                    toggle.classList.add("is-active");                     
                 };
             });
-        };
-        
+        };    
     };
 
     // Content wrapper position
@@ -361,9 +355,10 @@ document.addEventListener('DOMContentLoaded', function(){
     // 2.Scroll running event
     $(window).scroll(function(){
         scroll.top = $(document).scrollTop();
-        // headerPos();
         funcGroup();
+        negativeScroll();
         birdsMove();
+        
     });
     
     // 3.Screen scroll stop event 

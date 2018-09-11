@@ -15,6 +15,13 @@ html{
 
 body{
     background-color: #FEFEC9;
+    /* height: 100%; */
+    /* background: -moz-linear-gradient(top, #FF0000 0%, #FEFEC9 5%); */
+    /* background: -webkit-linear-gradient(top, #FF0000 0%, #FEFEC9 5%);  */
+}
+.body_fixed{
+    position: fixed;
+    width: 100%;
 }
 
 a:hover{ 
@@ -64,10 +71,6 @@ header .sun{
     color: inherit;
     text-decoration: inherit;
 }
-.logo a:hover{
-    /* color: #503e31; */
-    color: #5c4739;
-}
 .logo:first-letter{
     color: #8e030c;
 }
@@ -75,7 +78,6 @@ header .sun{
 /* nav */
 nav{
     height: 50px;
-    /* margin: 230px auto 0 auto; */
     margin: 250px auto 0 auto;
     width: 100%;
 }
@@ -100,7 +102,6 @@ nav{
     opacity: 1;
 }
 .nav_center_fixed{
-    /* background-color: #BA413F; */
     opacity: .8;
 }
 nav .nav_section{
@@ -131,7 +132,6 @@ nav #link_8{
 
 nav .toggle-hamburger,
 nav .toggle-hamburger__animx{
-    /* -webkit-border-radius: 20px; */
     border-radius: 3px;
     display: none;
 }
